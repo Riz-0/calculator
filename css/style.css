@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e5e7b6;
+  color: #f3eadb;
+  /* Font */
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 24px;
+  opacity: 0.5;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.calculator {
+  width: 23%;
+  height: 80%;
+  border-radius: 25px;
+  border: 15px solid #7d869c;
+  background-color: #f9ebd1;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  width: 100%;
+  background-color: #a2abab;
+  padding: 30px 40px 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  flex: 1;
+}
+
+.display {
+  background-color: #7d869c;
+  border-radius: 10px;
+  text-align: end;
+  padding: 20px;
+  width: 100%;
+}
+
+.bottom {
+  flex: 3;
+  padding: 25px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  gap: 10px;
+}
+
+button {
+  flex: 1;
+  font-family: inherit;
+  font-size: 36px;
+  font-weight: 700;
+  color: #f3eadb;
+  background-color: #7d869c;
+  border-radius: 10px;
+  border: none;
+}
+
+.row button:hover {
+  transform: scale(1.15);
+}
+
+.grey {
+  background-color: #a2abab;
+}
+
+.equals {
+  flex: 2;
+}
