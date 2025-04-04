@@ -15,10 +15,16 @@ function main() {
 
   const clearBtn = document.querySelector(".clear");
   clearBtn.addEventListener("click", clear);
+
+  const equalsBtn = document.querySelector(".equals");
+  equalsBtn.addEventListener("click", equals);
 }
 
 function numPress(e) {
-  if (equation.textContent === "UwU") equation.textContent = "";
+  if (equation.textContent === "UwU") {
+    equation.textContent = "";
+    operands = [];
+  }
   equation.textContent += e.target.textContent;
 }
 
@@ -44,7 +50,7 @@ function operate(e) {
     }
     operands.pop();
   }
-  lastOperation = e.target.textContent;
+  lastOperation = e === undefined ? "" : e.target.textContent;
   equation.textContent = `${operands[0]} ${lastOperation} `;
   total.textContent = `${operands[0]}`;
 }
@@ -67,6 +73,12 @@ function clear() {
   if (numbers.includes(equation.textContent.at(-1))) {
     equation.textContent = equation.textContent.slice(0, -1);
   }
+}
+
+function equals() {
+  operate();
+  total.textContent = operands[0];
+  equation.textContent = "UwU";
 }
 
 main();
