@@ -87,6 +87,7 @@ function equals() {
 function decimal() {
   const numbers = equation.textContent.split(" ");
   const i = operands.length < 1 ? 0 : 2;
-  if (!numbers[i].includes(".")) equation.textContent += ".";
+  if (!numbers[i].includes(".") && equation.textContent != "UwU")
+    equation.textContent += ".";
 }
 main();
