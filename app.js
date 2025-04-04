@@ -76,7 +76,13 @@ function operate(sign) {
 function getNewNumber() {
   const numbers = equation.textContent.split(" ");
   const i = operands.length < 1 ? 0 : 2;
-  operands.push(numbers[i] === "" ? 0 : parseFloat(numbers[i]));
+  operands.push(
+    numbers[i] === ""
+      ? lastOperation === "*" || lastOperation === "/"
+        ? 1
+        : 0
+      : parseFloat(numbers[i])
+  );
 }
 
 function allClear() {
@@ -94,9 +100,11 @@ function clear() {
 }
 
 function equals() {
-  operate();
-  total.textContent = operands[0];
-  equation.textContent = "UwU";
+  if (equation.textContent != "UwU") {
+    operate();
+    total.textContent = operands[0];
+    equation.textContent = "UwU";
+  }
 }
 
 function decimal() {
