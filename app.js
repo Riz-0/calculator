@@ -7,16 +7,8 @@ function main() {
   const numberBtns = document.querySelectorAll(".number");
   numberBtns.forEach((btn) => btn.addEventListener("click", numPress));
 
-  const addBtn = document.querySelector(".add");
-  addBtn.addEventListener("click", operate);
-  const subBtn = document.querySelector(".sub");
-  subBtn.addEventListener("click", operate);
-  const multiplyBtn = document.querySelector(".mul");
-  multiplyBtn.addEventListener("click", operate);
-  const divideBtn = document.querySelector(".div");
-  divideBtn.addEventListener("click", operate);
-  const modBtn = document.querySelector(".mod");
-  modBtn.addEventListener("click", operate);
+  const signBtns = document.querySelectorAll(".sign");
+  signBtns.forEach((btn) => btn.addEventListener("click", operate));
 }
 
 function numPress(e) {
