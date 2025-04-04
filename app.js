@@ -18,6 +18,9 @@ function main() {
 
   const equalsBtn = document.querySelector(".equals");
   equalsBtn.addEventListener("click", equals);
+
+  const decimalBtn = document.querySelector(".decimal");
+  decimalBtn.addEventListener("click", decimal);
 }
 
 function numPress(e) {
@@ -58,7 +61,7 @@ function operate(e) {
 function getNewNumber() {
   const numbers = equation.textContent.split(" ");
   const i = operands.length < 1 ? 0 : 2;
-  operands.push(numbers[i] === "" ? 0 : parseInt(numbers[i]));
+  operands.push(numbers[i] === "" ? 0 : parseFloat(numbers[i]));
 }
 
 function allClear() {
@@ -81,4 +84,9 @@ function equals() {
   equation.textContent = "UwU";
 }
 
+function decimal() {
+  const numbers = equation.textContent.split(" ");
+  const i = operands.length < 1 ? 0 : 2;
+  if (!numbers[i].includes(".")) equation.textContent += ".";
+}
 main();
