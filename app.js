@@ -36,19 +36,19 @@ function operate(e) {
   if (operands.length > 1) {
     switch (lastOperation) {
       case "+":
-        operands[0] = operands[0] + operands[1];
+        operands[0] = (operands[0] * 10 + operands[1] * 10) / 10;
         break;
       case "-":
-        operands[0] = operands[0] - operands[1];
+        operands[0] = (operands[0] * 10 - operands[1] * 10) / 10;
         break;
       case "*":
-        operands[0] = operands[0] * operands[1];
+        operands[0] = (operands[0] * 10 * (operands[1] * 10)) / 100;
         break;
       case "/":
-        operands[0] = operands[0] / operands[1];
+        operands[0] = (operands[0] * 10) / (operands[1] * 10);
         break;
       case "%":
-        operands[0] = operands[0] % operands[1];
+        operands[0] = ((operands[0] * 10) % (operands[1] * 10)) / 10;
         break;
     }
     operands.pop();
