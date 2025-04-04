@@ -12,6 +12,9 @@ function main() {
 
   const allClearBtn = document.querySelector(".all-clear");
   allClearBtn.addEventListener("click", allClear);
+
+  const clearBtn = document.querySelector(".clear");
+  clearBtn.addEventListener("click", clear);
 }
 
 function numPress(e) {
@@ -57,6 +60,13 @@ function allClear() {
   lastOperation = "";
   equation.textContent = "UwU";
   total.textContent = "0";
+}
+
+function clear() {
+  const numbers = "0123456789";
+  if (numbers.includes(equation.textContent.at(-1))) {
+    equation.textContent = equation.textContent.slice(0, -1);
+  }
 }
 
 main();
