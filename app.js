@@ -5,10 +5,14 @@ let lastOperation = "";
 
 function main() {
   const numberBtns = document.querySelectorAll(".number");
-  numberBtns.forEach((btn) => btn.addEventListener("click", numPress));
+  numberBtns.forEach((btn) =>
+    btn.addEventListener("click", (e) => numPress(e.target.textContent))
+  );
 
   const signBtns = document.querySelectorAll(".sign");
-  signBtns.forEach((btn) => btn.addEventListener("click", operate));
+  signBtns.forEach((btn) =>
+    btn.addEventListener("click", (e) => operate(e.target.textContent))
+  );
 
   const allClearBtn = document.querySelector(".all-clear");
   allClearBtn.addEventListener("click", allClear);
@@ -21,17 +25,28 @@ function main() {
 
   const decimalBtn = document.querySelector(".decimal");
   decimalBtn.addEventListener("click", decimal);
+
+  document.addEventListener("keydown", keyPress);
 }
 
-function numPress(e) {
+function keyPress(e) {
+  const numbers = "0123456789";
+  const signs = "+-*/%";
+  if (numbers.includes(e.key)) numPress(e.key);
+  if (signs.includes(e.key)) operate(e.key);
+  if (e.key === "Enter") equals();
+  if (e.key === ".") decimal();
+}
+
+function numPress(num) {
   if (equation.textContent === "UwU") {
     equation.textContent = "";
     operands = [];
   }
-  equation.textContent += e.target.textContent;
+  equation.textContent += num;
 }
 
-function operate(e) {
+function operate(sign) {
   getNewNumber();
   if (operands.length > 1) {
     switch (lastOperation) {
@@ -53,7 +68,7 @@ function operate(e) {
     }
     operands.pop();
   }
-  lastOperation = e === undefined ? "" : e.target.textContent;
+  lastOperation = sign;
   equation.textContent = `${operands[0]} ${lastOperation} `;
   total.textContent = `${operands[0]}`;
 }
