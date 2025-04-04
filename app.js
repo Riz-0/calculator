@@ -36,6 +36,8 @@ function keyPress(e) {
   if (signs.includes(e.key)) operate(e.key);
   if (e.key === "Enter") equals();
   if (e.key === ".") decimal();
+  if (e.key === "Backspace") clear();
+  if (e.key === "Escape") allClear();
 }
 
 function numPress(num) {
@@ -47,30 +49,32 @@ function numPress(num) {
 }
 
 function operate(sign) {
-  getNewNumber();
-  if (operands.length > 1) {
-    switch (lastOperation) {
-      case "+":
-        operands[0] = (operands[0] * 10 + operands[1] * 10) / 10;
-        break;
-      case "-":
-        operands[0] = (operands[0] * 10 - operands[1] * 10) / 10;
-        break;
-      case "*":
-        operands[0] = (operands[0] * 10 * (operands[1] * 10)) / 100;
-        break;
-      case "/":
-        operands[0] = (operands[0] * 10) / (operands[1] * 10);
-        break;
-      case "%":
-        operands[0] = ((operands[0] * 10) % (operands[1] * 10)) / 10;
-        break;
+  if (equation.textContent != "UwU") {
+    getNewNumber();
+    if (operands.length > 1) {
+      switch (lastOperation) {
+        case "+":
+          operands[0] = (operands[0] * 10 + operands[1] * 10) / 10;
+          break;
+        case "-":
+          operands[0] = (operands[0] * 10 - operands[1] * 10) / 10;
+          break;
+        case "*":
+          operands[0] = operands[0] * operands[1];
+          break;
+        case "/":
+          operands[0] = operands[0] / operands[1];
+          break;
+        case "%":
+          operands[0] = operands[0] % operands[1];
+          break;
+      }
+      operands.pop();
     }
-    operands.pop();
+    lastOperation = sign;
+    equation.textContent = `${operands[0]} ${lastOperation} `;
+    total.textContent = `${operands[0]}`;
   }
-  lastOperation = sign;
-  equation.textContent = `${operands[0]} ${lastOperation} `;
-  total.textContent = `${operands[0]}`;
 }
 
 function getNewNumber() {
