@@ -1,4 +1,4 @@
-const operands = [];
+let operands = [];
 const equation = document.querySelector("h2");
 const total = document.querySelector("h1");
 let lastOperation = "";
@@ -9,6 +9,9 @@ function main() {
 
   const signBtns = document.querySelectorAll(".sign");
   signBtns.forEach((btn) => btn.addEventListener("click", operate));
+
+  const allClearBtn = document.querySelector(".all-clear");
+  allClearBtn.addEventListener("click", allClear);
 }
 
 function numPress(e) {
@@ -47,6 +50,13 @@ function getNewNumber() {
   const numbers = equation.textContent.split(" ");
   const i = operands.length < 1 ? 0 : 2;
   operands.push(numbers[i] === "" ? 0 : parseInt(numbers[i]));
+}
+
+function allClear() {
+  operands = [];
+  lastOperation = "";
+  equation.textContent = "UwU";
+  total.textContent = "0";
 }
 
 main();
