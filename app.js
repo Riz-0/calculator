@@ -15,15 +15,19 @@ function main() {
 
   // Equals Button
   const equalBtn = document.querySelector(".equals");
-  equalBtn.addEventListener("click", (e) => equals());
+  equalBtn.addEventListener("click", equals);
 
   // Clear Button
   const clearBtn = document.querySelector(".clear");
-  clearBtn.addEventListener("click", (e) => clear());
+  clearBtn.addEventListener("click", clear);
 
   // All Clear Button
   const allClearBtn = document.querySelector(".all-clear");
-  allClearBtn.addEventListener("click", (e) => allClear());
+  allClearBtn.addEventListener("click", allClear);
+
+  // Decimal Button
+  const decimalBtn = document.querySelector(".decimal");
+  decimalBtn.addEventListener("click", decimal);
 
   // Keyboard Support
   document.addEventListener("keydown", (e) => keyHandler(e.key));
@@ -90,6 +94,14 @@ function allClear() {
   const total = document.querySelector("h1");
   equation.textContent = "UwU";
   total.textContent = "0";
+}
+
+function decimal() {
+  const operands = equation.textContent.split(" ");
+  i = operands.length - 1;
+  if (!operands[i].includes(".") && operands[i] !== "UwU") {
+    equation.textContent += ".";
+  }
 }
 
 function keyHandler(key) {
