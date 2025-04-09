@@ -60,7 +60,9 @@ function operate(sign) {
 
 function keyHandler(key) {
   const numbers = "0123456789";
+  const signs = "+-*/%";
   if (numbers.includes(key)) numPress(key);
+  if (signs.includes(key)) signPress(key);
 }
 
 main();
