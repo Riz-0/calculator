@@ -47,6 +47,14 @@ function operate(sign) {
       return parseFloat(operands[0]) + parseFloat(operands[2]);
     case "-":
       return parseFloat(operands[0]) - parseFloat(operands[2]);
+    case "*":
+      return parseFloat(operands[0]) * parseFloat(operands[2]);
+    case "/":
+      if (parseFloat(operands[2]) === 0) return 0;
+      return parseFloat(operands[0]) / parseFloat(operands[2]);
+    case "%":
+      if (parseFloat(operands[2]) === 0) return 0;
+      return parseFloat(operands[0]) % parseFloat(operands[2]);
   }
 }
 
