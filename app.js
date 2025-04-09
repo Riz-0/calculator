@@ -1,5 +1,4 @@
 const equation = document.querySelector("h2");
-let calcDone = true;
 
 function main() {
   // Num Buttons
@@ -18,6 +17,14 @@ function main() {
   const equalBtn = document.querySelector(".equals");
   equalBtn.addEventListener("click", (e) => equals());
 
+  // Clear Button
+  const clearBtn = document.querySelector(".clear");
+  clearBtn.addEventListener("click", (e) => clear());
+
+  // All Clear Button
+  const allClearBtn = document.querySelector(".all-clear");
+  allClearBtn.addEventListener("click", (e) => allClear());
+
   // Keyboard Support
   document.addEventListener("keydown", (e) => keyHandler(e.key));
 }
@@ -26,7 +33,6 @@ function numPress(num) {
   // Did the user just press a sign / Is it the first calculation?
   if (equation.textContent === "UwU") equation.textContent = "";
   equation.textContent += num;
-  calcDone = false;
 }
 
 function signPress(sign) {
@@ -39,7 +45,6 @@ function signPress(sign) {
       : operate(prevSign);
   equation.textContent = `${result} ${sign} `;
   total.textContent = result;
-  calcDone = true;
 }
 
 function operate(sign) {
@@ -71,6 +76,20 @@ function equals() {
     total.textContent = operate(operands[1]);
   }
   equation.textContent = "UwU";
+}
+
+function clear() {
+  const numbers = "0123456789";
+  if (equation.textContent.length === 1) equation.textContent = "UwU";
+  if (numbers.includes(equation.textContent.at(-1))) {
+    equation.textContent = equation.textContent.slice(0, -1);
+  }
+}
+
+function allClear() {
+  const total = document.querySelector("h1");
+  equation.textContent = "UwU";
+  total.textContent = "0";
 }
 
 function keyHandler(key) {
