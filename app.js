@@ -110,6 +110,9 @@ function keyHandler(key) {
   if (numbers.includes(key)) numPress(key);
   if (signs.includes(key)) signPress(key);
   if (key === "Enter") equals();
+  if (key === "Backspace") clear();
+  if (key === "Escape") allClear();
+  if (key === ".") decimal();
 }
 
 main();
