@@ -14,6 +14,10 @@ function main() {
     btn.addEventListener("click", (e) => signPress(e.target.textContent))
   );
 
+  // Equals Button
+  const equalBtn = document.querySelector(".equals");
+  equalBtn.addEventListener("click", (e) => equals());
+
   // Keyboard Support
   document.addEventListener("keydown", (e) => keyHandler(e.key));
 }
@@ -58,11 +62,23 @@ function operate(sign) {
   }
 }
 
+function equals() {
+  const total = document.querySelector("h1");
+  const operands = equation.textContent.split(" ");
+  if (operands[2] === "" || operands[2] === undefined) {
+    total.textContent = operands[0];
+  } else {
+    total.textContent = operate(operands[1]);
+  }
+  equation.textContent = "UwU";
+}
+
 function keyHandler(key) {
   const numbers = "0123456789";
   const signs = "+-*/%";
   if (numbers.includes(key)) numPress(key);
   if (signs.includes(key)) signPress(key);
+  if (key === "Enter") equals();
 }
 
 main();
